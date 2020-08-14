@@ -18,6 +18,7 @@ app.message('!changelog', async ({ message, say }) => {
 });
 
 async function searchChangelog(message, say) {
+    say(`Oi <@${message.user}>, Aguarde enquanto busco os changelogs na triton...`);
     const response = await request(OmnyChangelogUrl);
     const $ = cheerio.load(response);
     const article = $('article').html();
