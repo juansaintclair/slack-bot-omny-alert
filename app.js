@@ -24,7 +24,7 @@ async function searchChangelog(message, say) {
     const turndownService = new TurndownService()
     const convertedArticle = turndownService.turndown(article);
     
-    say(`Oi <@${message.user}>, segue os logs da Triton:${convertedArticle}`);
+    say(`Oi <@${message.user}>, segue os logs da Triton:\n${convertedArticle}`);
 }
 
 (async () => {
