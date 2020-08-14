@@ -1,5 +1,5 @@
 const { App } = require('@slack/bolt');
-const request = require('request.promise');
+const request = require('request-promise');
 const cheerio = require('cheerio');
 
 const OmnyChangelogUrl = 'https://help.omnystudio.com/en/articles/3740417-api-changelog';
