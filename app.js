@@ -18,7 +18,10 @@ app.message('!changelog', async ({ message, say }) => {
 
 async function searchChangelog() {
     const response = await request(OmnyChangelogUrl);
-    console.log(response);
+    let $ = cheerio.load(response);
+
+    let article = $('article').text();
+    console.log(article);
 }
 
 (async () => {
