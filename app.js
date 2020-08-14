@@ -1,4 +1,8 @@
 const { App } = require('@slack/bolt');
+const request = require('request.promise');
+const cheerio = require('cheerio');
+
+const OmnyChangelogUrl = 'https://help.omnystudio.com/en/articles/3740417-api-changelog';
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
@@ -12,8 +16,9 @@ app.message('!changelog', async ({ message, say }) => {
     await say(`Um minuto <@${message.user}>. Estou checando os logs da triton... ${searchChangelog()} ...`);
 });
 
-searchChangelog = () => {
-    return "Um minuto";
+async function searchChangelog() {
+    const response = await request(OmnyChangelogUrl);
+    console.log(response);
 }
 
 (async () => {

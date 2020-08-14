@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@slack/bolt": "^2.2.3"
+    "@slack/bolt": "^2.2.3",
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2"
   },
   "engines": {
     "node": "12.x"
