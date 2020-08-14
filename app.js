@@ -1,6 +1,7 @@
 const { App } = require('@slack/bolt');
 const request = require('request-promise');
 const cheerio = require('cheerio');
+const TurndownService = require('turndown');
 
 const OmnyChangelogUrl = 'https://help.omnystudio.com/en/articles/3740417-api-changelog';
 
@@ -20,9 +21,11 @@ async function searchChangelog(message, say) {
     const response = await request(OmnyChangelogUrl);
     const $ = cheerio.load(response);
     const article = $('article').html();
-    console.log(article);
+    const turndownService = new TurndownService()
+    const convertedArticle = turndownService.turndown(article);
+    
     say(`Oi <@${message.user}>, segue os logs da Triton: 
-    ${article}`);
+    ${convertedArticle}`);
 }
 
 (async () => {
