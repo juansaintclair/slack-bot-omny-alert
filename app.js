@@ -20,8 +20,9 @@ async function searchChangelog(message, say) {
     const response = await request(OmnyChangelogUrl);
     const $ = cheerio.load(response);
     const article = $('article').text();
-
-    say(`Oi <@${message.user}>, segue os logs da Triton: ${article}`);
+    console.log(article);
+    say(`Oi <@${message.user}>, segue os logs da Triton: 
+    ${article}`);
 }
 
 (async () => {
