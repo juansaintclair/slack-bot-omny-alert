@@ -9,8 +9,12 @@ const app = new App({
 // Listens to incoming messages that contain "hello"
 app.message('!changelog', async ({ message, say }) => {
     // say() sends a message to the channel where the event was triggered
-    await say(`Um minuto <@${message.user}>. Estou checando os logs da triton!`);
+    await say(`Um minuto <@${message.user}>. Estou checando os logs da triton... ${searchChangelog} ...`);
 });
+
+searchChangelog = () => {
+    return "Um minuto";
+}
 
 (async () => {
     // Start your app
