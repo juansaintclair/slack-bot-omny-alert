@@ -13,15 +13,15 @@ const app = new App({
 // Listens to incoming messages that contain "hello"
 app.message('!changelog', async ({ message, say }) => {
     // say() sends a message to the channel where the event was triggered
-    await say(`Um minuto <@${message.user}>. Estou checando os logs da triton... ${searchChangelog()} ...`);
+    await say(`Oi <@${message.user}>, segue os logs da Triton: ${searchChangelog()} ...`);
 });
 
 async function searchChangelog() {
     const response = await request(OmnyChangelogUrl);
-    let $ = cheerio.load(response);
+    const $ = cheerio.load(response);
+    const article = $('article').text();
 
-    let article = $('article').text();
-    console.log(article);
+    return article;
 }
 
 (async () => {
