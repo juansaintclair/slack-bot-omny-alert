@@ -19,7 +19,7 @@ app.message('!changelog', async ({ message, say }) => {
 async function searchChangelog(message, say) {
     const response = await request(OmnyChangelogUrl);
     const $ = cheerio.load(response);
-    const article = $('article').text();
+    const article = $('article').html();
     console.log(article);
     say(`Oi <@${message.user}>, segue os logs da Triton: 
     ${article}`);
